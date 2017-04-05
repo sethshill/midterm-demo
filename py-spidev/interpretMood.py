@@ -14,29 +14,30 @@ class Mood(object):
 		
 # Set Global Variables
 mood = Mood(60,60)		# Set default values
+# Define colors
+Red = (250,50,0)
+Orange = (220,125,0)
+Blue = (0,0,250)
+Yellow = (250,200,0)
 
-def displayMood(mood):
+def genColor(mood):
 	"""This function takes in mood, a class valence and arousel levels (1-100) and returns nothing. It does however generate a unique color 
 	and displays this color on an 8x8 matrix."""
 	#~ print(mood.valence, mood.arousal)
 	if mood.valence < 50 and mood.arousal > 50:
 		# Describes Exuberance
-		solid(250,50,0)		# Red (mostly)
-		print('Exuberance, Red (not working yet)')
+		return Red
 	if mood.valence > 50 and mood.arousal > 50:
 		# Describes Anxious/Frantic
-		solid(220,125,0)	# Orange
-		print('Anxious, Orange')
+		return Orange
 	if mood.valence > 50 and mood.arousal < 50:
 		# Describes Depression
-		solid(0,0,250)		# Blue
-		print('Depression, Blue')
+		return Blue
 	if mood.valence < 50 and mood.arousal < 50:
 		# Describes Contentment
-		solid(250,200,0)	# Yellow
-		print('Contentment, Yellow')
+		return Yellow
 
-def genMood(mood = Mood(50,50), key = None,rhythm = None,tempo= None):
+def genMood(mood = Mood(50,50), key = None,rhythm = None,dynamic = None,tempo= None):
 	"""Takes in a string (key) and 3 integers (rythIntensity, dynamic, tempo). Returns a tuple of arousal and valence levels."""
 	
 	# Set dummy variables for each component's respective contribution to valence (stress, x) and arousal (energy, y)
